@@ -1,11 +1,11 @@
-# RET - React Electron Typescript
+# Quicklink - Quickly opens links
 
-A program that's integrated react, electron, and typescript.
+A program that helps you open links quickly
 
 ## Install
 
 ```bash
-npm run postinstall
+npm run install
 ```
 
 ## Usage
