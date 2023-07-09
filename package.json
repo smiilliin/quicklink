@@ -54,7 +54,7 @@
     "publish": false
   },
   "keywords": [],
-  "author": "",
+  "author": "smiilliin",
   "license": "ISC",
   "devDependencies": {
     "@types/uuid": "^9.0.2",
