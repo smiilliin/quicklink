@@ -1,0 +1,9 @@
+#electron
+electron/node_modules
+electron/build
+#ret
+ret/node_modules
+ret/build
+#main ret
+node_modules
+release

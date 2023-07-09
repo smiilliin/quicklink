@@ -1,0 +1,13 @@
+{
+  "name": "electron",
+  "description": "Electron script",
+  "main": "./build/index.js",
+  "scripts": {
+    "dev": "nodemon -e ts --exec \"npm run build && npm run start\"",
+    "build": "tsc || exit 1",
+    "start": "cd .. && electron ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

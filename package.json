@@ -1,0 +1,61 @@
+{
+  "name": "quicklink",
+  "version": "1.0.0",
+  "description": "Quickly opens links",
+  "main": "./electron/build/index.js",
+  "scripts": {
+    "dev:script": "concurrently \"cd ret && npm run start\" \"node wait.js && cd electron && npm run dev\"",
+    "build": "concurrently \"cd electron && npm run build\" \"cd ret && npm run build\"",
+    "dev": "node dev.js",
+    "start": "electron .",
+    "release:win": "electron-builder build --win",
+    "release:mac": "electron-builder build --mac",
+    "release:linux": "electron-builder build --linux",
+    "release:all": "npm run release:win && npm run release:mac && npm run release:linux",
+    "release": "electron-builder",
+    "postinstall": "cd ret && npm install"
+  },
+  "files": [
+    "electron/build/**/*",
+    "ret/build/**/*"
+  ],
+  "build": {
+    "productName": "quicklink",
+    "appId": "com.smiilliin.quicklink",
+    "directories": {
+      "output": "release/${platform}"
+    },
+    "asar": true,
+    "win": {
+      "target": "portable",
+      "icon": "icon.ico",
+      "artifactName": "${productName}.exe"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "icon.ico",
+      "artifactName": "${productName}.dmg"
+    },
+    "linux": {
+      "target": "portable",
+      "icon": "icon.ico",
+      "artifactName": "${productName}"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/uuid": "^9.0.2",
+    "@types/wait-on": "^5.3.1",
+    "concurrently": "^8.2.0",
+    "cross-spawn": "^7.0.3",
+    "electron": "^25.2.0",
+    "electron-builder": "^24.4.0",
+    "nodemon": "^2.0.22",
+    "wait-on": "^7.0.1"
+  },
+  "dependencies": {
+    "@smiilliin/settings": "^1.0.10"
+  }
+}
