@@ -58,12 +58,6 @@ mac
 npm run release:mac
 ```
 
-linux
-
-```bash
-npm run release:win
-```
-
 all
 
 ```bash
