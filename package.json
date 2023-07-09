@@ -43,7 +43,7 @@
       "target": [
         "default"
       ],
-      "icon": "icon.ico",
+      "icon": "icon.icns",
       "artifactName": "${productName}.dmg"
     },
     "linux": {
