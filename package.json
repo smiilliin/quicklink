@@ -41,7 +41,7 @@
     },
     "mac": {
       "target": [
-        "default"
+        "dmg"
       ],
       "icon": "icon.icns",
       "artifactName": "${productName}.dmg"
