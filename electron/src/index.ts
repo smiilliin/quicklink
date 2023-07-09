@@ -65,7 +65,7 @@ const createSubWindow = async () => {
   if (port) {
     subWindow.loadURL(`http://localhost:${port}/#/setting`);
   } else {
-    subWindow.loadURL(`file://${path.join(__dirname, "../../ret/build/index.html#/setting")}`);
+    subWindow.loadURL(`file://${path.join(__dirname, "../../ret/build/index.html") + "#/setting"}`);
   }
   subWindow.on("close", () => {
     subWindow = undefined;
