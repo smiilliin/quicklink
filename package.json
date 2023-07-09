@@ -10,8 +10,7 @@
     "start": "electron .",
     "release:win": "electron-builder build --win",
     "release:mac": "electron-builder build --mac",
-    "release:linux": "electron-builder build --linux",
-    "release:all": "npm run release:win && npm run release:mac && npm run release:linux",
+    "release:all": "npm run release:win && npm run release:mac",
     "release": "electron-builder",
     "postinstall": "cd ret && npm install"
   },
@@ -45,11 +44,6 @@
       ],
       "icon": "icon.icns",
       "artifactName": "${productName}.dmg"
-    },
-    "linux": {
-      "target": "AppImage",
-      "icon": "icon.ico",
-      "artifactName": "${productName}"
     },
     "publish": false
   },
