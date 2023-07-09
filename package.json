@@ -27,20 +27,31 @@
     },
     "asar": true,
     "win": {
-      "target": "portable",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ],
       "icon": "icon.ico",
       "artifactName": "${productName}.exe"
     },
     "mac": {
-      "target": "dmg",
+      "target": [
+        "default"
+      ],
       "icon": "icon.ico",
       "artifactName": "${productName}.dmg"
     },
     "linux": {
-      "target": "portable",
+      "target": "AppImage",
       "icon": "icon.ico",
       "artifactName": "${productName}"
-    }
+    },
+    "publish": false
   },
   "keywords": [],
   "author": "",

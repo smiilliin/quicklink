@@ -75,7 +75,7 @@ const createSubWindow = async () => {
 app.on("ready", () => {
   if (app.isPackaged) {
     app.setLoginItemSettings({
-      openAtLogin: false,
+      openAtLogin: true,
     });
   }
   createMainWindow();
