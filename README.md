@@ -10,6 +10,21 @@ npm run install
 
 ## Usage
 
+### How to use
+
+default shortcut: `ctrl + alt + c`  
+double shortcut to open setting tab(if you set any setting)
+
+#### Setting file directory
+
+##### windows
+
+`%appdata%\\Roming\\quicklink`
+
+##### mac
+
+`~/library`
+
 ### Dev
 
 dev.js finds an available port and runs react and electron windows.(Restarts when code's saved.)
