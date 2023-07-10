@@ -12,9 +12,6 @@ const devTool = false;
 const openLink = (link: string) => {
   let explorer;
   switch (os.platform()) {
-    case "linux":
-      explorer = "xdg-open";
-      break;
     case "darwin":
       explorer = "open";
       break;
@@ -65,7 +62,11 @@ const createSubWindow = async () => {
   if (port) {
     subWindow.loadURL(`http://localhost:${port}/#/setting`);
   } else {
-    subWindow.loadURL(`file://${path.join(__dirname, "../../ret/build/index.html") + "#/setting"}`);
+    subWindow.loadURL(
+      `file://${
+        path.join(__dirname, "../../ret/build/index.html") + "#/setting"
+      }`
+    );
   }
   subWindow.on("close", () => {
     subWindow = undefined;
@@ -83,20 +84,24 @@ app.on("ready", () => {
   const settingManager = new SettingManager("quicklink");
 
   ipcMain.on("forLinks", (event) => {
-    const { linkShortcut }: any = settingManager.load("shortcuts.json", { linkShortcut: "ctrl+alt+c" });
+    const { linkShortcut }: any = settingManager.load("shortcuts.json", {
+      linkShortcut: "ctrl+alt+c",
+    });
 
     const onLink = () => {
       const { links } = settingManager.load("links.json", { links: [] });
       if (!mainWindow.isVisible() && links.length > 0) {
-        const getWindowSize = mainWindow.getSize();
+        const windowSize = mainWindow.getSize();
         const mousePos = screen.getCursorScreenPoint();
-        mainWindow.setPosition(mousePos.x - getWindowSize[0] / 2, mousePos.y - getWindowSize[1] / 2);
+        mainWindow.setPosition(
+          Math.round(mousePos.x - windowSize[0] / 2),
+          Math.round(mousePos.y - windowSize[1] / 2)
+        );
 
         mainWindow.show();
 
         let oldMousePos = screen.getCursorScreenPoint();
         const windowPos = mainWindow.getPosition();
-        const windowSize = mainWindow.getSize();
 
         const mouseInterval = setInterval(() => {
           if (!mainWindow) {
