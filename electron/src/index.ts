@@ -51,7 +51,7 @@ const createSubWindow = async () => {
   subWindow = new BrowserWindow({
     width: 540,
     height: 300,
-    // autoHideMenuBar: true,
+    autoHideMenuBar: true,
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: true,

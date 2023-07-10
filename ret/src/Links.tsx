@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import DirIcon from "./dir.svg";
+import WWWIcon from "./www.svg";
 import styled, { keyframes, css } from "styled-components";
 
 const IconAnimation = keyframes`
@@ -58,6 +59,7 @@ const IconTag = styled.span`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-weight: bold;
 `;
 interface IELink {
   children: string;
@@ -65,7 +67,6 @@ interface IELink {
 }
 const Link = ({ children, link }: IELink) => {
   const [animate, setAnimate] = useState(false);
-
   return (
     <LinkContainer
       onClick={() => {
@@ -78,7 +79,7 @@ const Link = ({ children, link }: IELink) => {
       }}
       animate={animate ? 1 : 0}
     >
-      <Icon src={DirIcon}></Icon>
+      <Icon src={/^http:|^https:/g.test(link) ? WWWIcon : DirIcon}></Icon>
       <IconTag>{children}</IconTag>
     </LinkContainer>
   );
