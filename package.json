@@ -1,6 +1,6 @@
 {
   "name": "quicklink",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Quickly opens links",
   "main": "./electron/build/index.js",
   "scripts": {
