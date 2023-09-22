@@ -61,6 +61,6 @@
     "wait-on": "^7.0.1"
   },
   "dependencies": {
-    "@smiilliin/settings": "^1.0.10"
+    "@smiilliin/settings": "^1.0.11"
   }
 }

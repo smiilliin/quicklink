@@ -1,8 +1,9 @@
 import { screen, app, BrowserWindow, ipcMain, globalShortcut } from "electron";
 import * as path from "path";
 import SettingManager from "@smiilliin/settings";
-import { spawn } from "child_process";
+import { spawn, exec } from "child_process";
 import os from "os";
+import fs from "fs";
 
 let mainWindow: BrowserWindow;
 let subWindow: BrowserWindow | undefined;
@@ -10,16 +11,35 @@ const port = process.env.DEV ? process.env.PORT : undefined;
 const devTool = false;
 
 const openLink = (link: string) => {
-  let explorer;
-  switch (os.platform()) {
-    case "darwin":
-      explorer = "open";
-      break;
-    default:
-      explorer = "explorer";
-      break;
+  if (fs.statSync(link).isDirectory()) {
+    let explorer;
+    switch (os.platform()) {
+      case "win32":
+        explorer = "explorer";
+        break;
+      case "darwin":
+      default:
+        explorer = "open";
+        break;
+    }
+
+    spawn(explorer, [link], { detached: true }).unref();
+  } else {
+    switch (os.platform()) {
+      case "win32":
+        exec(`start "start" "${link.replace(/"/g, '\\"')}"`, {
+          cwd: path.dirname(link),
+        }).unref();
+        break;
+      case "darwin":
+      default:
+        spawn("open", [link], {
+          cwd: path.dirname(link),
+          detached: true,
+        }).unref();
+        break;
+    }
   }
-  spawn(explorer, [link], { detached: true }).unref();
 };
 
 const createMainWindow = async () => {
